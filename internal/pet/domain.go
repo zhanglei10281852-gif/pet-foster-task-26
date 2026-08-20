@@ -145,13 +145,6 @@ type Page[T any] struct {
 	PageSize int `json:"pageSize"`
 }
 
-func (p Principal) CanTransitionOrders() bool {
-	if p.UserID == 0 {
-		return false
-	}
-	return true
-}
-
 type Principal struct {
 	UserID    int64  `json:"userId"`
 	Username  string `json:"username"`

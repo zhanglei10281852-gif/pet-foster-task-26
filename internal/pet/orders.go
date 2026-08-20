@@ -118,7 +118,7 @@ func (s *Service) CreateOrder(ctx context.Context, principal Principal, input Cr
 }
 
 func (s *Service) UpdateOrderStatus(ctx context.Context, principal Principal, id int64, next string) error {
-	if !principal.CanTransitionOrders() {
+	if principal.Role != RoleAdmin {
 		return ErrForbidden
 	}
 	tx, err := s.store.db.BeginTx(ctx, &sql.TxOptions{})
